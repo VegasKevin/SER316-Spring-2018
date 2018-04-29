@@ -28,10 +28,19 @@ import javax.swing.border.EtchedBorder;
 import main.java.memoranda.ui.htmleditor.util.Local;
 
 /**
- * <p>Title: </p>
- * <p>Description: </p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: </p>
+ * <p>
+ * Title:
+ * </p>
+ * <p>
+ * Description:
+ * </p>
+ * <p>
+ * Copyright: Copyright (c) 2002
+ * </p>
+ * <p>
+ * Company:
+ * </p>
+ * 
  * @author unascribed
  * @version 1.0
  */
@@ -56,9 +65,8 @@ public class ImageDialog extends JDialog implements WindowListener {
     JLabel jLabel7 = new JLabel();
     public JTextField borderField = new JTextField();
     JLabel jLabel8 = new JLabel();
-    String[] aligns = {"left", "right", "top", "middle", "bottom", "absmiddle",
-        "texttop", "baseline"}; 
-    // Note: align values are not localized because they are HTML keywords 
+    String[] aligns = { "left", "right", "top", "middle", "bottom", "absmiddle", "texttop", "baseline" };
+    // Note: align values are not localized because they are HTML keywords
     public JComboBox alignCB = new JComboBox(aligns);
     JLabel jLabel9 = new JLabel();
     public JTextField urlField = new JTextField();
@@ -70,11 +78,10 @@ public class ImageDialog extends JDialog implements WindowListener {
     public ImageDialog(Frame frame) {
         super(frame, Local.getString("Image"), true);
         try {
-            jbInit();
-            pack();
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
+        jbInit();
+        pack();
+        } catch (Exception ex) {
+        ex.printStackTrace();
         }
         super.addWindowListener(this);
     }
@@ -92,13 +99,11 @@ public class ImageDialog extends JDialog implements WindowListener {
         header.setForeground(new Color(0, 0, 124));
         header.setText(Local.getString("Image"));
         header.setIcon(new ImageIcon(
-                main.java.memoranda.ui.htmleditor.ImageDialog.class.getResource(
-                        "/htmleditor/icons/imgbig.png")));
+                main.java.memoranda.ui.htmleditor.ImageDialog.class.getResource("/htmleditor/icons/imgbig.png")));
         headerPanel.add(header);
         this.getContentPane().add(headerPanel, BorderLayout.NORTH);
 
-        areaPanel.setBorder(new EtchedBorder(Color.white, new Color(142, 142,
-                142)));
+        areaPanel.setBorder(new EtchedBorder(Color.white, new Color(142, 142, 142)));
         jLabel1.setText(Local.getString("Image file"));
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -119,8 +124,7 @@ public class ImageDialog extends JDialog implements WindowListener {
         browseB.setMinimumSize(new Dimension(25, 25));
         browseB.setPreferredSize(new Dimension(25, 25));
         browseB.setIcon(new ImageIcon(
-                main.java.memoranda.ui.htmleditor.ImageDialog.class.getResource(
-                        "/htmleditor/icons/fileopen16.png")));
+                main.java.memoranda.ui.htmleditor.ImageDialog.class.getResource("/htmleditor/icons/fileopen16.png")));
         browseB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 browseB_actionPerformed(e);
@@ -301,110 +305,90 @@ public class ImageDialog extends JDialog implements WindowListener {
         ImageIcon tmpIcon = new ImageIcon(file.getPath());
         ImageIcon thmb = null;
         if (tmpIcon.getIconHeight() > 48) {
-            thmb = new ImageIcon(tmpIcon.getImage()
-                    .getScaledInstance( -1, 48, Image.SCALE_DEFAULT));
-        }
-        else {
-            thmb = tmpIcon;
+        thmb = new ImageIcon(tmpIcon.getImage().getScaledInstance(-1, 48, Image.SCALE_DEFAULT));
+        } else {
+        thmb = tmpIcon;
         }
         if (thmb.getIconWidth() > 350) {
-            return new ImageIcon(thmb.getImage()
-                    .getScaledInstance(350, -1, Image.SCALE_DEFAULT));
-        }
-        else {
-            return thmb;
+        return new ImageIcon(thmb.getImage().getScaledInstance(350, -1, Image.SCALE_DEFAULT));
+        } else {
+        return thmb;
         }
     }
 
-    //java.io.File selectedFile = null;
+    // java.io.File selectedFile = null;
     public void updatePreview() {
         try {
-            if (new java.net.URL(fileField.getText()).getPath() != "")
-                header.setIcon(getPreviewIcon(new java.io.File(
-                        new java.net.URL(fileField.getText()).getPath())));
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
+        if (new java.net.URL(fileField.getText()).getPath() != "")
+            header.setIcon(getPreviewIcon(new java.io.File(new java.net.URL(fileField.getText()).getPath())));
+        } catch (Exception ex) {
+        ex.printStackTrace();
         }
     }
 
     public void windowOpened(WindowEvent e) {
     }
+
     public void windowClosing(WindowEvent e) {
         CANCELLED = true;
         this.dispose();
     }
+
     public void windowClosed(WindowEvent e) {
     }
+
     public void windowIconified(WindowEvent e) {
     }
+
     public void windowDeiconified(WindowEvent e) {
     }
+
     public void windowActivated(WindowEvent e) {
     }
+
     public void windowDeactivated(WindowEvent e) {
     }
 
     void browseB_actionPerformed(ActionEvent e) {
         // Fix until Sun's JVM supports more locales...
-        UIManager.put("FileChooser.lookInLabelText", Local
-                .getString("Look in:"));
-        UIManager.put("FileChooser.upFolderToolTipText", Local.getString(
-                "Up One Level"));
-        UIManager.put("FileChooser.newFolderToolTipText", Local.getString(
-                "Create New Folder"));
-        UIManager.put("FileChooser.listViewButtonToolTipText", Local
-                .getString("List"));
-        UIManager.put("FileChooser.detailsViewButtonToolTipText", Local
-                .getString("Details"));
-        UIManager.put("FileChooser.fileNameLabelText", Local.getString(
-                "File Name:"));
-        UIManager.put("FileChooser.filesOfTypeLabelText", Local.getString(
-                "Files of Type:"));
+        UIManager.put("FileChooser.lookInLabelText", Local.getString("Look in:"));
+        UIManager.put("FileChooser.upFolderToolTipText", Local.getString("Up One Level"));
+        UIManager.put("FileChooser.newFolderToolTipText", Local.getString("Create New Folder"));
+        UIManager.put("FileChooser.listViewButtonToolTipText", Local.getString("List"));
+        UIManager.put("FileChooser.detailsViewButtonToolTipText", Local.getString("Details"));
+        UIManager.put("FileChooser.fileNameLabelText", Local.getString("File Name:"));
+        UIManager.put("FileChooser.filesOfTypeLabelText", Local.getString("Files of Type:"));
         UIManager.put("FileChooser.openButtonText", Local.getString("Open"));
-        UIManager.put("FileChooser.openButtonToolTipText", Local.getString(
-                "Open selected file"));
-        UIManager
-                .put("FileChooser.cancelButtonText", Local.getString("Cancel"));
-        UIManager.put("FileChooser.cancelButtonToolTipText", Local.getString(
-                "Cancel"));
+        UIManager.put("FileChooser.openButtonToolTipText", Local.getString("Open selected file"));
+        UIManager.put("FileChooser.cancelButtonText", Local.getString("Cancel"));
+        UIManager.put("FileChooser.cancelButtonToolTipText", Local.getString("Cancel"));
 
         JFileChooser chooser = new JFileChooser();
         chooser.setFileHidingEnabled(false);
         chooser.setDialogTitle(Local.getString("Choose an image file"));
         chooser.setAcceptAllFileFilterUsed(false);
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        chooser.addChoosableFileFilter(
-                new main.java.memoranda.ui.htmleditor.filechooser.ImageFilter());
-        chooser.setAccessory(
-                new main.java.memoranda.ui.htmleditor.filechooser.ImagePreview(
-                        chooser));
+        chooser.addChoosableFileFilter(new main.java.memoranda.ui.htmleditor.filechooser.ImageFilter());
+        chooser.setAccessory(new main.java.memoranda.ui.htmleditor.filechooser.ImagePreview(chooser));
         chooser.setPreferredSize(new Dimension(550, 375));
-        java.io.File lastSel = (java.io.File) Context.get(
-                "LAST_SELECTED_IMG_FILE");
+        java.io.File lastSel = (java.io.File) Context.get("LAST_SELECTED_IMG_FILE");
         if (lastSel != null)
             chooser.setCurrentDirectory(lastSel);
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            try {
-                fileField.setText(chooser.getSelectedFile().toURL().toString());
-                header.setIcon(getPreviewIcon(chooser.getSelectedFile()));
-                Context
-                        .put("LAST_SELECTED_IMG_FILE", chooser
-                                .getSelectedFile());
-            }
-            catch (Exception ex) {
-                fileField.setText(chooser.getSelectedFile().getPath());
-            }
-            try {
-                ImageIcon img = new ImageIcon(chooser.getSelectedFile()
-                        .getPath());
-                widthField.setText(new Integer(img.getIconWidth()).toString());
-                heightField
-                        .setText(new Integer(img.getIconHeight()).toString());
-            }
-            catch (Exception ex) {
-                ex.printStackTrace();
-            }
+        try {
+        fileField.setText(chooser.getSelectedFile().toURL().toString());
+        header.setIcon(getPreviewIcon(chooser.getSelectedFile()));
+        Context.put("LAST_SELECTED_IMG_FILE", chooser.getSelectedFile());
+        } catch (Exception ex) {
+        fileField.setText(chooser.getSelectedFile().getPath());
+        }
+        try {
+        ImageIcon img = new ImageIcon(chooser.getSelectedFile().getPath());
+        widthField.setText(new Integer(img.getIconWidth()).toString());
+        heightField.setText(new Integer(img.getIconHeight()).toString());
+        } catch (Exception ex) {
+        ex.printStackTrace();
+        }
         }
     }
 }

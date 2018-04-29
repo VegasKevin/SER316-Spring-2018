@@ -7,23 +7,25 @@
  * Copyright (c) 2003 Memoranda Team. http://memoranda.sf.net
  */
 package main.java.memoranda.util;
+
 import java.util.Vector;
 
 import nu.xom.Attribute;
 import nu.xom.Document;
 import nu.xom.Element;
 import nu.xom.Elements;
+
 /**
  *
  */
-/*$Id: MimeTypesList.java,v 1.3 2004/01/30 12:17:42 alexeya Exp $*/
+/* $Id: MimeTypesList.java,v 1.3 2004/01/30 12:17:42 alexeya Exp $ */
 public class MimeTypesList {
     public static Document _doc = null;
     static Element _root = null;
 
     static {
-        CurrentStorage.get().openMimeTypesList();
-        _root = _doc.getRootElement();
+    CurrentStorage.get().openMimeTypesList();
+    _root = _doc.getRootElement();
     }
 
     public static Vector getAllMimeTypes() {
@@ -49,11 +51,11 @@ public class MimeTypesList {
     public static MimeType getMimeTypeByExt(String ext) {
         Elements els = _root.getChildElements("mime-type");
         for (int i = 0; i < els.size(); i++) {
-            Element el = els.get(i);
-            Elements exts = el.getChildElements("ext");
-            for (int j = 0; j < exts.size(); j++)
-                if (exts.get(j).getValue().toLowerCase().equals(ext.toLowerCase()))
-                    return new MimeType(el);
+        Element el = els.get(i);
+        Elements exts = el.getChildElements("ext");
+        for (int j = 0; j < exts.size(); j++)
+            if (exts.get(j).getValue().toLowerCase().equals(ext.toLowerCase()))
+                return new MimeType(el);
         }
         return new MimeType();
     }
@@ -69,8 +71,8 @@ public class MimeTypesList {
         Elements els = _root.getChildElements("mime-type");
         for (int i = 0; i < els.size(); i++)
             if (els.get(i).getAttribute("id").getValue().equals(mimeId)) {
-                _root.removeChild(els.get(i));
-                return;
+            _root.removeChild(els.get(i));
+            return;
             }
     }
 
@@ -81,11 +83,10 @@ public class MimeTypesList {
     public static String getExtension(String s) {
         String ext = null;
         int i = s.lastIndexOf('.');
-        if (i > 0 &&  i < s.length() - 1) {
-            ext = s.substring(i+1).toLowerCase();
+        if (i > 0 && i < s.length() - 1) {
+        ext = s.substring(i + 1).toLowerCase();
         }
         return ext;
     }
-
 
 }

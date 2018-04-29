@@ -17,7 +17,7 @@ import main.java.memoranda.util.Local;
 /**
  *
  */
-/*$Id: AllFilesFilter.java,v 1.5 2004/01/30 12:17:41 alexeya Exp $*/
+/* $Id: AllFilesFilter.java,v 1.5 2004/01/30 12:17:41 alexeya Exp $ */
 public class AllFilesFilter extends FileFilter {
 
     public static final String RTF = "RTF";
@@ -34,6 +34,7 @@ public class AllFilesFilter extends FileFilter {
     public static final String WAV = "WAV";
 
     String _type = "";
+
     /**
      * Constructor for AllFilesFilter.
      */
@@ -92,7 +93,7 @@ public class AllFilesFilter extends FileFilter {
         String s = f.getName();
         int i = s.lastIndexOf('.');
         if (i > 0 && i < s.length() - 1) {
-            ext = s.substring(i + 1).toLowerCase();
+        ext = s.substring(i + 1).toLowerCase();
         }
         return ext;
     }
